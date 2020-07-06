@@ -8,11 +8,23 @@ def i_format(command, binary_flag):
     for i in command_spl:
         command_stripped.append(i.strip(',X#'))
 
+    print(command_stripped)
+
     # Save parsed data to variables
     opcode_str = command_stripped[0]
-    Rd = int(command_stripped[1])
-    Rn = int(command_stripped[2])
     immediate = int(command_stripped[3])
+
+    # Need to check for XZR register
+
+    if command_stripped[1] == 'ZR':
+        Rd = 0
+    else:
+        Rd = int(command_stripped[1])
+
+    if command_stripped[2] == 'ZR':
+        Rn = 0
+    else:
+        Rn = int(command_stripped[2])
 
     opcode_dec = 0
     return_str = ""     # Holds the string to be returned
