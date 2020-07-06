@@ -1,7 +1,7 @@
 from decimaltobinary import *
 
 
-def r_format(command):
+def rformat(command,boolflag):
     command_spl = command.split()
     command_stripped = []
     for i in command_spl:
@@ -27,38 +27,104 @@ def r_format(command):
 
     if command_stripped[0] == 'ADD':
         opcode = 1112
-        print(opcode, " ", Rm, " 0 ", Rn, " ", Rd)
+
+        if boolflag == False:
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 0 '  + str(Rn) +  ' ' +  str(Rd)
+
+        else:
+            opcode = decimaltobinary(opcode,11)
+            Rd = decimaltobinary(Rd,5)
+            Rn = decimaltobinary(Rn,5)
+            Rm = decimaltobinary(Rm,5)
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 0 '  + str(Rn) +  ' ' +  str(Rd)
 
 
 
     elif command_stripped[0] == 'SUB':
         opcode = 1624
-        print(opcode, " ", Rm, " 0 ", Rn, " ", Rd)
+        if boolflag == False:
+            return_str = str(opcode) + ' ' + str(Rm) + ' 0 ' + str(Rn) + ' ' + str(Rd)
+
+        else:
+            opcode = decimaltobinary(opcode, 11)
+            Rd = decimaltobinary(Rd, 5)
+            Rn = decimaltobinary(Rn, 5)
+            Rm = decimaltobinary(Rm, 5)
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 000000 '  + str(Rn) +  ' ' +  str(Rd)
 
     elif command_stripped[0] == 'AND':
         opcode = 1104
-        print(opcode, " ", Rm, " 0 ", Rn, " ", Rd)
+        if boolflag == False:
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 0 '  + str(Rn) +  ' ' +  str(Rd)
+
+        else:
+            opcode = decimaltobinary(opcode, 11)
+            Rd = decimaltobinary(Rd, 5)
+            Rn = decimaltobinary(Rn, 5)
+            Rm = decimaltobinary(Rm, 5)
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 000000 '  + str(Rn) +  ' ' +  str(Rd)
 
     elif command_stripped[0] == 'ORR':
         opcode = 1360
-        print(opcode, " ", Rm, " 0 ", Rn, " ", Rd)
+        if boolflag == False:
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 0 '  + str(Rn) +  ' ' +  str(Rd)
+
+        else:
+            opcode = decimaltobinary(opcode, 11)
+            Rd = decimaltobinary(Rd, 5)
+            Rn = decimaltobinary(Rn, 5)
+            Rm = decimaltobinary(Rm, 5)
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 000000 '  + str(Rn) +  ' ' +  str(Rd)
 
     elif command_stripped[0] == 'EOR':
         opcode = 1616
-        print(opcode, " ", Rm, " 0 ", Rn, " ", Rd)
+        if boolflag == False:
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 0 '  + str(Rn) +  ' ' +  str(Rd)
+
+        else:
+            opcode = decimaltobinary(opcode, 11)
+            Rd = decimaltobinary(Rd, 5)
+            Rn = decimaltobinary(Rn, 5)
+            Rm = decimaltobinary(Rm, 5)
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 000000 '  + str(Rn) +  ' ' +  str(Rd)
 
     elif command_stripped[0] == 'LSL':
         opcode = 1691
-        print(opcode, " X ", shamt , " ", Rn, " ", Rd)
+
+        if boolflag == False:
+            return_str = str(opcode) + ' X ' + str(shamt) + " " + str(Rn) + " " + str(Rd)
+        else:
+            opcode = decimaltobinary(opcode,11)
+            Rd = decimaltobinary(Rd,5)
+            Rn = decimaltobinary(Rn,5)
+            shamt = decimaltobinary(shamt,6)
+            return_str = str(opcode) + ' 00000 ' + str(shamt) + " " + str(Rn) + " " + str(Rd)
+
 
     elif command_stripped[0] == 'LSR':
         opcode = 1690
-        print(opcode, " X ", shamt, " ", Rn, " ", Rd)
+        if boolflag == False:
+            return_str = str(opcode) + ' X ' +  str(shamt) + " " + str(Rn) + " " + str(Rd)
+
+        else:
+            opcode = decimaltobinary(opcode, 11)
+            Rd = decimaltobinary(Rd, 5)
+            Rn = decimaltobinary(Rn, 5)
+            shamt = decimaltobinary(shamt, 6)
+            return_str = str(opcode) + ' 00000 ' +  str(shamt) + " " + str(Rn) + " " + str(Rd)
 
     elif command_stripped[0] == 'SUBS':
         opcode = 1880
-        print(opcode, " ", Rm, " 0 ", Rn, " ", Rd)
+        if boolflag == False:
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 0 '  + str(Rn) +  ' ' +  str(Rd)
 
+        else:
+            opcode = decimaltobinary(opcode, 11)
+            Rd = decimaltobinary(Rd, 5)
+            Rn = decimaltobinary(Rn, 5)
+            Rm = decimaltobinary(Rm, 5)
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 000000 '  + str(Rn) +  ' ' +  str(Rd)
 
+    return return_str
 
 
