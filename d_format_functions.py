@@ -1,3 +1,5 @@
+from decimaltobinary import *
+
 def d_format(command, binary_flag):
     '''Takes a d-format instruction and translates it into decimal. Enter False in binary_flag for decimal, True for binary'''
     
@@ -10,10 +12,10 @@ def d_format(command, binary_flag):
     #print(command_stripped)
 
     opcode = command_stripped[0]
-    address = command_stripped[3]
+    address = int(command_stripped[3])
     op2 = 0
-    Rn = command_stripped[2]
-    Rt = command_stripped[1]
+    Rn = int(command_stripped[2])
+    Rt = int(command_stripped[1])
 
     opcode_dec = 0 # Holds decimal opcode
     return_str = "" # Holds string to be returned
@@ -25,7 +27,13 @@ def d_format(command, binary_flag):
         return_str = str(opcode_dec) + ' ' + str(address) + ' ' + str(op2) + ' ' + str(Rn) + ' ' + str(Rt)
         return return_str
     else:                     # Return code in binary
-        pass
+        opcode_bin = decimaltobinary(opcode_dec, 11)
+        address_bin = decimaltobinary(address, 9)
+        op2 = decimaltobinary(op2, 2)
+        Rn_bin = decimaltobinary(Rn, 5)
+        Rt_bin = decimaltobinary(Rt, 5)
+        return_str = str(opcode_bin) + ' ' + str(address_bin) + ' ' + str(op2) + ' ' + str(Rn_bin) + ' ' + str(Rt_bin)
+        return return_str
 
 # Testing
 # command = 'LDUR X19, [X22, #0]'

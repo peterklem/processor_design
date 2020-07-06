@@ -1,3 +1,5 @@
+from decimaltobinary import *
+
 def i_format(command, binary_flag):
     '''Takes an i-format instruction and translates it into decimal. Enter False in binary_flag for decimal, True for binary'''
 
@@ -47,10 +49,10 @@ def i_format(command, binary_flag):
         return_str = str(opcode_dec) + ' ' + str(Rd) + ' ' + str(Rn) + ' ' + str(immediate)
         return return_str
     else:                        # Receive answer in binary
-        opcode_bin = bin(opcode_dec) # Convert op to binary
-        Rd_bin = bin(Rd)
-        Rn_bin = bin(Rn)
-        imm_bin = bin(immediate)
+        opcode_bin = decimaltobinary(opcode_dec, 10) # Convert op to binary
+        Rd_bin = decimaltobinary(Rd, 5)
+        Rn_bin = decimaltobinary(Rn, 5)
+        imm_bin = decimaltobinary(immediate, 12)
 
         return_str = str(opcode_bin) + ' ' + str(Rd_bin) + ' ' + str(Rn_bin) + ' ' + str(imm_bin)
         return return_str

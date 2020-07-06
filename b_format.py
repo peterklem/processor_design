@@ -1,3 +1,5 @@
+from decimaltobinary import *
+
 def b_format(command, binary_flag, goto_dict, current_line):
 
     line = 0
@@ -14,6 +16,12 @@ def b_format(command, binary_flag, goto_dict, current_line):
             address = current_line - line
 
     opcode = 5
-    return_str = str(opcode) + ' ' + str(address)
+    if binary_flag == False:
+        return_str = str(opcode) + ' ' + str(address)
+
+    else:
+        opcode = decimaltobinary(opcode,6)
+        address = decimaltobinary(address,26)
+        return_str = str(opcode) + ' ' + str(address)
 
     return return_str
