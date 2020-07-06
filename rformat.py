@@ -36,7 +36,7 @@ def rformat(command,boolflag):
             Rd = decimaltobinary(Rd,5)
             Rn = decimaltobinary(Rn,5)
             Rm = decimaltobinary(Rm,5)
-            return_str = str(opcode) + ' ' +  str(Rm) +  ' 0 '  + str(Rn) +  ' ' +  str(Rd)
+            return_str = str(opcode) + ' ' +  str(Rm) +  ' 000000 '  + str(Rn) +  ' ' +  str(Rd)
 
 
 
