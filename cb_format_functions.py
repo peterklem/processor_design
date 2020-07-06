@@ -1,56 +1,63 @@
 def cb_format(command, binary_flag, goto_dict, current_line):
     # Format line
-    command = command.upper()
-    command_split = command.split()
-    for item in command_split:
-        item.strip()
-    
-    # Assign variables
-    opcode = command_split[0]
-    address = ''
-    Rt = ''
-    current_line
+    line = 0
 
-    # Get address
-    
-    # Check if it is a CBZ/CBNZ or a B.cond
-    if opcode[0] == 'B':
-        print('B')
-    elif opcode[0] == 'C':
-        opcode_dec = 84
-        print('C')
+    command_spl = command.split()
+    command_stripped = []
+    for i in command_spl:
+        command_stripped.append(i.strip(',X#'))
+    print(command_stripped)
 
-    # 
-    if opcode == 'CBZ':
-        opcode_dec = 180
-    elif opcode == 'CBNZ':
-        opcode_dec = 181
-    elif opcode == 'B.EQ':
-        pass
-        # Rt_dec =
-    elif opcode == 'B.NE':
-        pass
-        # Rt_dec =
-    elif opcode == 'B.GT':
-        pass
-        # Rt_dec =
-    elif opcode == 'B.GE':
-        pass
-        # Rt_dec =
-    elif opcode == 'B.LT':
-        pass
-        # Rt_dec =
-    elif opcode == 'B.LE':
-        pass
-        # Rt_dec =
-    else:
-        # Not a cb-format command
-        print("This is not a CB-format command.")
 
-goto_dict = {}
-goto_dict['Loop'] = 3
-goto_dict['Exit'] = 10
+    ##### Go Through the dictionary and match the conditional word and then find the address
+    if command_stripped[0] in ['B.EQ', 'B.NE', 'B.GT', 'B.LT', 'B.LE', 'B.GE']:
+        for i in goto_dict:
+            if i == command_stripped[1]:
+                line = goto_dict[i]
+        address = line - current_line
 
-command = 'CBNZ Loop'
+    if command_stripped[0] in ['B.EQ', 'B.NE', 'B.GT', 'B.LT', 'B.LE', 'B.GE']:
+        for i in goto_dict:
+            if i == command_stripped[1]:
+                line = goto_dict[i]
+        address = line - current_line
 
-cb_format(command, False, goto_dict)
+
+
+    if command_stripped[0] in ['B.EQ', 'B.NE', 'B.GT', 'B.LT', 'B.LE', 'B.GE']:
+        if command_stripped[0] in ['B.GE']:
+            opcode = 84
+            return_str = str(opcode) + ' ' + str(address) + ' 10'
+
+        elif command_stripped[0] in ['B.EQ']:
+            opcode = 84
+            return_str = str(opcode) + ' ' + str(address) + ' 0'
+
+        elif command_stripped[0] in ['B.NE']:
+            opcode = 84
+            return_str = str(opcode) + ' ' + str(address) + ' 1'
+
+        elif command_stripped[0] in ['B.GT']:
+            opcode = 84
+            return_str = str(opcode) + ' ' + str(address) + ' 12'
+
+        elif command_stripped[0] in ['B.LE']:
+            opcode = 84
+            return_str = str(opcode) + ' ' + str(address) + ' 13'
+
+        elif command_stripped[0] in ['B.LT']:
+            opcode = 84
+            return_str = str(opcode) + ' ' + str(address) + ' 11'
+
+    elif command_stripped[0] in ['CBZ', 'CBNZ']:
+        if command_stripped[0] in ['CBZ']:
+            opcode = 180
+            Rt = int(command_stripped[1])
+            return_str = str(opcode) + ' ' + str(address) + ' ' + str(Rt)
+
+        elif command_stripped[0] in ['CBNZ']:
+            opcode = 181
+            Rt = int(command_stripped[1])
+            return_str = str(opcode) + ' ' + str(address) + ' ' + str(Rt)
+
+    return return_str
