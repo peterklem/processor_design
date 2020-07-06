@@ -1,7 +1,8 @@
 def i_format(command, binary_flag):
-    '''Takes an i-format instruction and translates it into decimal'''
+    '''Takes an i-format instruction and translates it into decimal. Enter False in binary_flag for decimal, True for binary'''
 
     # Parse the line to get useful data
+    command = command.upper()
     command_spl = command.split()
     command_stripped = []
     for i in command_spl:
@@ -46,6 +47,6 @@ def i_format(command, binary_flag):
     
 
 
-
-print(i_format('ADDI X9, X21, #10', True))
+# Testing
+# print(i_format('ADDI X9, X21, #10', True))
 

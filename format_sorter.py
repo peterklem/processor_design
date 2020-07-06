@@ -24,17 +24,18 @@ def format_sorter(line):
         return 'n'
 
 
+# Testing 
 # command = 'ADD X19, XZR, XZR'
 # print(format_sorter(command))
 
-command = 'SUBI X11, X11, #5'
-print(format_sorter(command))
+# command = 'SUBI X11, X11, #5'
+# print(format_sorter(command))
 
 # command = '	STUR X14, [X10, #0]'
 # print(format_sorter(command))
 
-command = '	B.GE Exit'
-print(format_sorter(command))
+# command = '	B.GE Exit'
+# print(format_sorter(command))
 
 # command = '	B Loop'
 # print(format_sorter(command))
