@@ -1,6 +1,6 @@
 from i_format_functions import *
 from d_format_functions import *
-from cbformat import *
+from cb_format_functions import *
 from rformat import *
 from format_sorter import *
 
@@ -32,20 +32,21 @@ if __name__ == '__main__':
                 print(jump_name)
                 jump_dict[jump_name] = count
             count += 1
-        
+
+    print(jump_dict)
     # All jumps have been sorted and recorded. 
     with open(infile, 'r') as file:
         count = 1 # Starting on line 1
         for line in file:
             cmd_format = format_sorter(line)
             if cmd_format == 'r':
-                line_converted = r_format(line)
+                line_converted = rformat(line,False)
             elif cmd_format == 'i':
                 line_converted = i_format(line, False)
             elif cmd_format == 'd':
                 line_converted = d_format(line, False)
             elif cmd_format == 'cb':
-                pass
+                line_converted = cb_format(line,False,jump_dict,count)
             elif cmd_format == 'b':
                 pass
             else:
@@ -70,9 +71,7 @@ if __name__ == '__main__':
                     pass
                 elif cmd_format == 'b':
                     pass
-                else:
-                    print("Line " + str(count) + " is not a valid LEGv8 command")
-                    break
+
             count += 1
             output_lines.append(line_converted) # Add to converted line list
 
@@ -80,6 +79,7 @@ if __name__ == '__main__':
     with open(outfile, 'w') as output:
         for line in output_lines:
             output.write(line)
+            output.write('\n')
 
     
 
