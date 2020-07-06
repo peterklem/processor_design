@@ -2,6 +2,7 @@ from i_format_functions import *
 from d_format_functions import *
 from cb_format_functions import *
 from rformat import *
+from b_format import *
 from format_sorter import *
 
 
@@ -33,7 +34,6 @@ if __name__ == '__main__':
                 jump_dict[jump_name] = count
             count += 1
 
-    print(jump_dict)
     # All jumps have been sorted and recorded. 
     with open(infile, 'r') as file:
         count = 1 # Starting on line 1
@@ -46,9 +46,9 @@ if __name__ == '__main__':
             elif cmd_format == 'd':
                 line_converted = d_format(line, False)
             elif cmd_format == 'cb':
-                line_converted = cb_format(line,False,jump_dict,count)
+                line_converted = cb_format(line, False, jump_dict, count)
             elif cmd_format == 'b':
-                pass
+                line_converted = b_format(line, False, jump_dict, count)
             else:
                 # line is either bad or starts with a jump
                 # split up line and compare first entry with all entries in jump_dict
@@ -58,7 +58,7 @@ if __name__ == '__main__':
                 for item in range(len(line_spl) - 1):
                     line_edited += line_spl[item + 1] + ' '
                 # line_edited is now a valid line 
-                cmd_format = format_sorter(line)
+                cmd_format = format_sorter(line_edited)
                 if cmd_format == 'r':
                     pass
                 elif cmd_format == 'i':
