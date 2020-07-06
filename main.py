@@ -1,7 +1,9 @@
 from i_format_functions import *
 from d_format_functions import *
-from cb_format_functions import *
+from cbformat import *
+from rformat import *
 from format_sorter import *
+
 
 infile = 'code3.txt'       # input file locaition
 outfile = 'out1.txt'       # output file location
@@ -17,7 +19,8 @@ if __name__ == '__main__':
     line_converted = ''     # Holds return value from each of the functions 
     output_lines = []       # List of converted lines
     
-    # Open file 
+    
+    # Open file and look for jumps
     with open(infile, 'r') as file:
         count = 1     # First line is line 1
         for line in file:       # Loop through the file, look for jumps
@@ -36,11 +39,11 @@ if __name__ == '__main__':
         for line in file:
             cmd_format = format_sorter(line)
             if cmd_format == 'r':
-                pass
+                line_converted = r_format(line)
             elif cmd_format == 'i':
                 line_converted = i_format(line, False)
             elif cmd_format == 'd':
-                line_converted - d_format(line, False)
+                line_converted = d_format(line, False)
             elif cmd_format == 'cb':
                 pass
             elif cmd_format == 'b':
@@ -58,8 +61,10 @@ if __name__ == '__main__':
                 if cmd_format == 'r':
                     pass
                 elif cmd_format == 'i':
+                    line_converted = i_format(line_edited, False)
                     pass
                 elif cmd_format == 'd':
+                    line_converted = d_format(line_edited, False)
                     pass
                 elif cmd_format == 'cb':
                     pass
@@ -67,5 +72,17 @@ if __name__ == '__main__':
                     pass
                 else:
                     print("Line " + str(count) + " is not a valid LEGv8 command")
+                    break
             count += 1
+            output_lines.append(line_converted) # Add to converted line list
+
+    # Print lines to screen
+    with open(outfile, 'w') as output:
+        for line in output_lines:
+            output.write(line)
+
+    
+
+        
+
 
