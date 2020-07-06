@@ -11,6 +11,8 @@ def cb_format(command, binary_flag, goto_dict, current_line):
     Rt = ''
     current_line
 
+    # Get address
+    
     # Check if it is a CBZ/CBNZ or a B.cond
     if opcode[0] == 'B':
         print('B')
