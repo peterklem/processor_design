@@ -1,6 +1,7 @@
 def cb_format(command, binary_flag, goto_dict, current_line):
     # Format line
     line = 0
+    return_str = ' '
 
     command_spl = command.split()
     command_stripped = []
