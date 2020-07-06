@@ -1,7 +1,7 @@
 from decimaltobinary import *
 
 
-def rformatdecimal(command):
+def r_format(command):
     command_spl = command.split()
     command_stripped = []
     for i in command_spl:
