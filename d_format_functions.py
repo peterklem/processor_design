@@ -10,7 +10,9 @@ def d_format(command, binary_flag):
     for i in command_spl:
         command_stripped.append(i.strip(',X#[]'))
     #print(command_stripped)
-
+    for item in command_stripped:
+        if item == 'ZR':
+            item = 0
     opcode = command_stripped[0]
     address = int(command_stripped[3])
     op2 = 0

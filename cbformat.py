@@ -11,7 +11,7 @@ def cbformatdecimal(command):
     command_stripped = []
     for i in command_spl:
         command_stripped.append(i.strip(',X#'))
-    print(command_stripped)
+    #print(command_stripped)
 
     count1 = 0  # This will count where we will see the conditional
     file2 = open(r"code3.txt", "r+")

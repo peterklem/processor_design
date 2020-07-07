@@ -10,7 +10,7 @@ def i_format(command, binary_flag):
     for i in command_spl:
         command_stripped.append(i.strip(',X#'))
 
-    print(command_stripped)
+    #print(command_stripped)
 
     # Save parsed data to variables
     opcode_str = command_stripped[0]

@@ -6,7 +6,7 @@ from b_format import *
 from format_sorter import *
 
 
-infile = 'code3.txt'       # input file locaition
+infile = 'code1.txt'       # input file locaition
 outfile = 'out1.txt'       # output file location
 binary_output = False   # If true, values will be ouptut in binary. If false, they will be output in decimal
 
@@ -27,10 +27,9 @@ if __name__ == '__main__':
         for line in file:       # Loop through the file, look for jumps
             cmd_format = format_sorter(line)
             if cmd_format == 'n':   # Jump detected
-                print('Jump detected on line ' + str(count))
+                #print('Jump detected on line ' + str(count))
                 line_spl = line.split()
                 jump_name = line_spl[0].strip(':')
-                print(jump_name)
                 jump_dict[jump_name] = count
             count += 1
 
@@ -53,14 +52,13 @@ if __name__ == '__main__':
                 # line is either bad or starts with a jump
                 # split up line and compare first entry with all entries in jump_dict
                 line_spl = line.split()
-                print(line_spl)
                 line_edited = ''
                 for item in range(len(line_spl) - 1):
                     line_edited += line_spl[item + 1] + ' '
                 # line_edited is now a valid line 
                 cmd_format = format_sorter(line_edited)
                 if cmd_format == 'r':
-                    pass
+                    line_converted = rformat(line_edited, False)
                 elif cmd_format == 'i':
                     line_converted = i_format(line_edited, False)
                     pass
@@ -68,9 +66,10 @@ if __name__ == '__main__':
                     line_converted = d_format(line_edited, False)
                     pass
                 elif cmd_format == 'cb':
-                    pass
+                    line_converted = cb_format(line, False, jump_dict, count)
                 elif cmd_format == 'b':
-                    pass
+                    line_converted = b_format(line, False, jump_dict, count)
+
 
             count += 1
             output_lines.append(line_converted) # Add to converted line list

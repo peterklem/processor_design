@@ -7,7 +7,7 @@ def b_format(command, binary_flag, goto_dict, current_line):
     command_stripped = []
     for i in command_spl:
         command_stripped.append(i.strip(',X#'))
-    print(command_stripped)
+    #print(command_stripped)
 
     for i in goto_dict:
         if i == command_stripped[1]:
