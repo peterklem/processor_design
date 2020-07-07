@@ -6,7 +6,7 @@ def rformat(command,boolflag):
     command_stripped = []
     for i in command_spl:
         command_stripped.append(i.strip(',X#'))
-    print(command_stripped)
+    #print(command_stripped)
 
     if command_stripped[0] in ['ADD','SUB','AND','ORR','EOR','SUBS']:
         Rd = int(command_stripped[1])
