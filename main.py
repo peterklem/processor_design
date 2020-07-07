@@ -5,10 +5,11 @@ from rformat import *
 from b_format import *
 from format_sorter import *
 
-
-infile = 'code3.txt'       # input file locaition
-outfile = 'out3.txt'       # output file location
-binary_output = False   # If true, values will be ouptut in binary. If false, they will be output in decimal
+# IMPORTANT USER SETTINGS
+# =================================================================================
+infile = 'code3.txt'        # input file locaition
+outfile = 'out3.txt'        # output file location
+# =================================================================================
 
 if __name__ == '__main__':
     # Variables
