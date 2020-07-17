@@ -4,13 +4,12 @@ def cb_format(command, binary_flag, goto_dict, current_line):
     # Format line
     line = 0
     return_str = ' '
-    command = command.upper()
     split_comments = command.split('/')
     command_spl = split_comments[0].split()
     command_stripped = []
     for i in command_spl:
         command_stripped.append(i.strip(',X#'))
-    print(command_stripped)
+
 
 
     ##### Go Through the dictionary and match the conditional word and then find the address
@@ -20,9 +19,9 @@ def cb_format(command, binary_flag, goto_dict, current_line):
                 line = goto_dict[i]
         address = line - current_line
 
-    if command_stripped[0] in ['B.EQ', 'B.NE', 'B.GT', 'B.LT', 'B.LE', 'B.GE']:
+    if command_stripped[0] in ['CBZ', 'CBNZ']:
         for i in goto_dict:
-            if i == command_stripped[1]:
+            if i == command_stripped[2]:
                 line = goto_dict[i]
         address = line - current_line
 

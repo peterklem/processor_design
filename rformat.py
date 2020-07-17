@@ -2,7 +2,8 @@ from decimaltobinary import *
 
 
 def rformat(command,boolflag):
-    command_spl = command.split()
+    command = command.split('//',1)
+    command_spl = command[0].split()
     command_stripped = []
     for i in command_spl:
         command_stripped.append(i.strip(',X#'))
