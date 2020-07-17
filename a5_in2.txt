@@ -1,0 +1,5 @@
+ADD  X21, XZR, XZR	//X21 = 0 or the beginning of data memory
+LDUR X9,  [X21, #0]	//X9 = 10
+LDUR X10, [X21, #1]	//X10 = 13
+ADD  X11, X9,  X10
+STUR X11, [X21, #2]
