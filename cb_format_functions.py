@@ -4,8 +4,9 @@ def cb_format(command, binary_flag, goto_dict, current_line):
     # Format line
     line = 0
     return_str = ' '
-
-    command_spl = command.split()
+    command = command.upper()
+    split_comments = command.split('/')
+    command_spl = split_comments[0].split()
     command_stripped = []
     for i in command_spl:
         command_stripped.append(i.strip(',X#'))
@@ -107,3 +108,5 @@ def cb_format(command, binary_flag, goto_dict, current_line):
                 return_str = str(opcode) + ' ' + str(address) + ' ' + str(Rt)
 
     return return_str
+
+

@@ -4,7 +4,8 @@ def d_format(command, binary_flag):
     '''Takes a d-format instruction and translates it into decimal. Enter False in binary_flag for decimal, True for binary'''
     
     command = command.upper()
-    command_spl = command.split()
+    split_comments = command.split('/')
+    command_spl = split_comments[0].split()
     command_stripped = []
     #print(command_spl)
     for i in command_spl:
@@ -13,6 +14,7 @@ def d_format(command, binary_flag):
     for item in command_stripped:
         if item == 'ZR':
             item = 0
+
     opcode = command_stripped[0]
     address = int(command_stripped[3])
     op2 = 0
@@ -38,5 +40,5 @@ def d_format(command, binary_flag):
         return return_str
 
 # Testing
-# command = 'LDUR X19, [X22, #0]'
-# print(d_format(command, False))
+#command = 'LDUR X19, [X22, #0] // This is a comment'
+#print(d_format(command, False))

@@ -5,7 +5,8 @@ def i_format(command, binary_flag):
 
     # Parse the line to get useful data
     command = command.upper()
-    command_spl = command.split()
+    split_comments = command.split('/')
+    command_spl = split_comments[0].split()
     command_stripped = []
     for i in command_spl:
         command_stripped.append(i.strip(',X#'))
@@ -61,6 +62,6 @@ def i_format(command, binary_flag):
     
 
 
-# Testing
-# print(i_format('ADDI X9, X21, #10', True))
+ #Testing
+print(i_format('ADDI X9, X21, #10 //This is a comments', False))
 
