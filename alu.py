@@ -46,4 +46,5 @@ def alu(opcode_text, in_reg1, in_reg2=-1):
         return in_reg1 + in_reg2
 
     # CB and B-format functions
-    
+    elif opcode_text in ['B.EQ', 'B.NE', 'B.GT', 'B.LT', 'B.LE', 'B.GE', 'B']:
+        return in_reg1 - in_reg2
