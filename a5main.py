@@ -31,9 +31,19 @@ with open('test1.txt', 'r') as f:    mem_list = [i.strip() for i in f.readlines(
 IMEM = {}
 for i in range(len(mem_list)):
     IMEM[i] = mem_list[i]
-
+print('Before Simulation: \n\n')
 print('IMEM contents:\n\n')
 print(IMEM, '\n\n')
+
+reg_items = RMEM.items()
+data_items = DMEM.items()
+
+print('Register items: \n\n')
+for reg in reg_items:
+    print('Register: ', reg[0], '\tValue: ', reg[1])
+
+for reg in data_items:
+    print('Data memory: ', reg[0], '\tValue: ', reg[1])
 
 # Manual input for data memory
 for i in range(10):
@@ -50,6 +60,7 @@ for i in range(10):
 
 print('The memory should update to these values:\n\n')
 print(DMEM)
+
 i = 0
 while i in range(len(mem_list)):
     full_text = fetch_instruction(IMEM[i])  # Fetch instruction
@@ -70,7 +81,10 @@ while i in range(len(mem_list)):
         if len(data_list) == 2:
             reg2 = data_list[1]
         else:
-            reg2 = int(text_split[1])
+            if text_split[0] in ['LDUR', 'STUR']:
+                reg2 = 0
+            else:
+                reg2 = int(text_split[1])
 
 
         result_alu = alu(text_split[0], reg1, reg2)  # Input registers into ALU
@@ -91,6 +105,7 @@ while i in range(len(mem_list)):
             i += 1
 
 # Print out registers at the end of simulation
+print('After Simulation: \n\n')
 reg_items = RMEM.items()
 data_items = DMEM.items()
 
