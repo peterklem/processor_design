@@ -42,6 +42,7 @@ for i in range(10):
         break
     elif choice == 1: # Change MEM value
         DMEM_address = input('Enter from 1 to 10 the DMEM address you want to change: ')
+        DMEM_address = int(DMEM_address)
         value = input('Enter value inside the DMEM: ')
         value = int(value)
         DMEM[DMEM_address] = value
