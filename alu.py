@@ -28,14 +28,14 @@ def alu(opcode_text, in_reg1, in_reg2=0):
     elif opcode_text in ['SUBS', 'SUBIS']:
         answer = in_reg1 - in_reg2
         # Check flags
-        flags = {}
+        flag = {}
         flag['Negative'] = False
         flag['Zero'] = False
         if answer < 0:
             flag['Negative'] = True
         elif answer == 0:
             flag['Zero'] = True
-        return [answer, flags] 
+        return answer
 
     # D-format functions
 
