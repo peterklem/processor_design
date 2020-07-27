@@ -58,7 +58,7 @@ while i in range(len(mem_list)):
     opcode_text = text_split[0]
     last_entry = int(last_entry)
     if text_split[0] in ['B']:
-        i = i - text_split[1]
+        i = i - int(text_split[1])
 
 
 
@@ -71,7 +71,12 @@ while i in range(len(mem_list)):
             reg2 = data_list[1]
         else:
             reg2 = int(text_split[1])
+
+
         result_alu = alu(text_split[0], reg1, reg2)  # Input registers into ALU
+
+
+
         # Update registers
         RMEM[last_entry] = result_alu
         if opcode_text in ['LDUR', 'STUR']:
