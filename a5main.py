@@ -34,7 +34,6 @@ for i in range(len(mem_list)):
 print('IMEM contents:\n\n')
 print(IMEM + '\n\n')
 
-file1 = open()
 # Manual input for data memory
 for i in range(10):
     choice = input('Press 1 to change DMEM values or 0 to stop: ')
@@ -50,3 +49,12 @@ for i in range(10):
 print('The memory should update to these values:\n\n')
 print(DMEM)
 
+for i in range(len(mem_list)):
+    opcode_text = fetch_instruction(IMEM[i]) # Fetch instruction
+    data_list = decode(reg_dict) # Decode instruction and fetch registers
+    # Instantiate register values
+    reg1 = 0
+    reg2 = 0
+    if len(data_list) == 2:
+        reg1 = data_list[0]
+        reg2 = data_list[1]
