@@ -44,10 +44,7 @@ for reg in reg_items:
 
 print('\n')
 
-for reg in data_items:
-    print('Data memory: ', reg[0], '\tValue: ', reg[1])
 
-print('\n')
 
 # Manual input for data memory
 for i in range(10):
@@ -62,8 +59,10 @@ for i in range(10):
         value = int(value)
         DMEM[DMEM_address] = value
 
-print('The memory should update to these values:\n\n')
-print(DMEM)
+for reg in data_items:
+    print('Data memory: ', reg[0], '\tValue: ', reg[1])
+
+print('\n')
 
 i = 0
 while i in range(len(mem_list)):
