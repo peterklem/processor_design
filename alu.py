@@ -49,9 +49,15 @@ def alu(opcode_text, in_reg1, in_reg2=0):
     elif opcode_text in ['B.EQ', 'B.NE', 'B.GT', 'B.LT', 'B.LE', 'B.GE', 'B']:
         return in_reg1 - in_reg2
 
-    elif opcode_text in ['CBZ', 'CBNZ']:
+    elif opcode_text in ['CBZ']:
         '''Returns zero if the reg == 0, 1 if not'''
         if in_reg1 == 0:
-            return 0
+            return True
         else:
-            return 1
+            return False
+
+    elif opcode_text in ['CBNZ']:
+        if in_reg1 == 0:
+            return False
+        else:
+            return True
