@@ -42,8 +42,12 @@ print('Register items: \n\n')
 for reg in reg_items:
     print('Register: ', reg[0], '\tValue: ', reg[1])
 
+print('\n')
+
 for reg in data_items:
     print('Data memory: ', reg[0], '\tValue: ', reg[1])
+
+print('\n')
 
 # Manual input for data memory
 for i in range(10):
@@ -112,6 +116,8 @@ data_items = DMEM.items()
 print('Register items: \n\n')
 for reg in reg_items:
     print('Register: ', reg[0], '\tValue: ', reg[1])
+
+print('\n')
 
 for reg in data_items:
     print('Data memory: ', reg[0], '\tValue: ', reg[1])
