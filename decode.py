@@ -22,6 +22,7 @@ def decode(goto_dict, command):
         return_list.append(goto_dict[command_split[4]])
 
     elif format == 'cb':
+        command_split[2] = int(command_split[2])
         return_list.append(goto_dict[command_split[2]])
 
     return return_list
