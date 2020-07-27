@@ -52,8 +52,11 @@ def fetch_instruction(line):
     for op in opcode_dict.items():
         if op[1] == split[0]:
             opcode_text = op[0]
-
-    return opcode_text
+    
+    full_text = opcode_text
+    for i in range(1, len(split)):
+        full_text = full_text +  ' ' + split[i]
+    return full_text
 
 # print(fetch_instruction('84 11 10'))
 # print(fetch_instruction('580 14 14 21'))
