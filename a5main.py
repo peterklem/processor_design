@@ -1,10 +1,11 @@
+from fetch_instruction_type import *
+from decode import *
+from alu import alu
+# Import data memory
+
+
 def readregister():
     pass
-
-
-
-
-
 
 
 
@@ -20,9 +21,20 @@ for i in range(32):
 reg_dict['ZR'] = 0
 
 
-print(reg_dict)
-
 DMEM = {}
+for i in range(10):
+    DMEM[i] = 0
+
+with open('out2.txt', 'r') as f:    mem_list = [i.strip() for i in f.readlines()]
+
+IMEM = {}
+for i in range(len(mem_list)):
+    IMEM[i] = mem_list[i]
+
+print('IMEM contents:\n\n')
+print(IMEM + '\n\n')
+
+file1 = open()
 # Manual input for data memory
 for i in range(10):
     choice = input('Press 1 to change DMEM values or 0 to stop: ')
@@ -35,5 +47,6 @@ for i in range(10):
         value = int(value)
         DMEM[DMEM_address] = value
 
+print('The memory should update to these values:\n\n')
 print(DMEM)
 
