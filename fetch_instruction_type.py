@@ -47,7 +47,7 @@ def fetch_instruction(line):
             raise Exception('CB format function does not have valid Rt value.')
 
     # B-format
-    opcode_dict['B'] = 5
+    opcode_dict['B'] = '5'
 
     for op in opcode_dict.items():
         if op[1] == split[0]:

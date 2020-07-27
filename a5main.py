@@ -76,13 +76,19 @@ while i in range(len(mem_list)):
         result_alu = alu(text_split[0], reg1, reg2)  # Input registers into ALU
 
 
+        if text_split[0] in ['CBZ', 'CBNZ']:
+            if result_alu == False:
+                i += 1
+            else:
+                i = i + int(text_split[1])
 
-        # Update registers
-        RMEM[last_entry] = result_alu
-        if opcode_text in ['LDUR', 'STUR']:
-            data_access(DMEM, RMEM, full_text)
+        else:
+            # Update registers
+            RMEM[last_entry] = result_alu
+            if opcode_text in ['LDUR', 'STUR']:
+                data_access(DMEM, RMEM, full_text)
 
-        i += 1
+            i += 1
 
 # Print out registers at the end of simulation
 reg_items = RMEM.items()
