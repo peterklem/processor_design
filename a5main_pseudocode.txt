@@ -1,0 +1,15 @@
+Assign registers at the beginning
+
+For as many entries as needed:
+
+    opcode_text = fetch_instruction(raw line)
+    data_list = decode(register_dictionary, opcode_text)
+    if length(data_list) == 2
+        reg1 = data_list[0]
+        reg2 = data_list[1]
+        alu(opcode_text, reg1, reg2)
+    else
+        reg1 = data_list[0]
+        alu(opcode_text, reg1, reg2)
+        if opcode_text = d format
+            data_mem(reg1, reg2, raw_line)
