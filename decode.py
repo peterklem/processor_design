@@ -18,10 +18,11 @@ def decode(goto_dict, command):
         return_list.append(goto_dict[command_split[2]])
 
     elif format == 'd':
-        command_split[3] = int(command_split[3])
-        return_list.append(goto_dict[command_split[3]])
+        command_split[4] = int(command_split[4])
+        return_list.append(goto_dict[command_split[4]])
 
     elif format == 'cb':
+        command_split[2] = int(command_split[2])
         return_list.append(goto_dict[command_split[2]])
 
     return return_list

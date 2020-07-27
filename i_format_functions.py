@@ -47,7 +47,7 @@ def i_format(command, binary_flag):
 
 
     if binary_flag == False:     # Receive answer in decimal
-        return_str = str(opcode_dec) + ' ' + str(Rd) + ' ' + str(Rn) + ' ' + str(immediate)
+        return_str = str(opcode_dec) + ' ' + str(immediate) + ' ' + str(Rn) + ' ' + str(Rd)
         return return_str
     else:                        # Receive answer in binary
         opcode_bin = decimaltobinary(opcode_dec, 10) # Convert op to binary
@@ -55,7 +55,7 @@ def i_format(command, binary_flag):
         Rn_bin = decimaltobinary(Rn, 5)
         imm_bin = decimaltobinary(immediate, 12)
 
-        return_str = str(opcode_bin) + ' ' + str(Rd_bin) + ' ' + str(Rn_bin) + ' ' + str(imm_bin)
+        return_str = str(opcode_bin) + ' ' + str(imm_bin) + ' ' + str(Rn_bin) + ' ' +  str(Rd_bin)
         return return_str
         
 
